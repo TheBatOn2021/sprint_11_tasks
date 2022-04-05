@@ -1,27 +1,28 @@
+# ID 66701646
+from collections import Counter
+
+
+def hands_dex(k, matrix):
+    # Вот тут мы сделали "список частот"
+    cnt = Counter(matrix)
+    cnt = list(cnt.values())
+    counter = 0
+    [counter := counter + 1 for i in range(
+        len(cnt)) if (cnt[i] > 0 and cnt[i] <= k * 2)]
+    return counter
+
+
 def read_input():
-    num = int(input())
-    plots = [int(c) for c in input().split()]
-    return num, plots
-
-
-def nearest_zero(num, plots):
-    free_plot = (num * -1)-1
-    left_plot = [0] * num
-    min_dist = [0] * num
-    for i in range(num):
-        if plots[i] == 0:
-            free_plot = i
-        else:
-            left_plot[i] = i - free_plot
-    free_plot = num + float("inf")
-    for i in range(num-1, -1, -1):
-        if plots[i] == 0:
-            free_plot = i
-        else:
-            min_dist[i] = min(free_plot - i, left_plot[i])
-    return (min_dist)
+    k = int(input())
+    matrix = []
+    for i in range(4):
+        matrix.append(input())
+    matrix = "".join(map(str, matrix))
+    matrix = "".join(c for c in matrix if c.isdecimal())
+    return (k, matrix)
 
 
 if __name__ == "__main__":
-    num, plots = read_input()
-    print(*nearest_zero(num, plots))
+    k, matrix = read_input()
+    # Ни одной ошибки линтеров flake8, pycodestyle, mypy нет
+    print(hands_dex(k, matrix))
