@@ -1,4 +1,3 @@
-# ID 66701646
 from collections import Counter
 
 
@@ -6,8 +5,6 @@ def hands_dex(k, matrix):
     # Вот тут мы сделали "список частот"
     cnt = Counter(matrix)
     cnt = list(cnt.values())
-    # Вот тут понимаем, какая частота удовлетворяет условиям (>0, <=k2)
-    # О каких "сторонних эффектах, усложняющих рассуждения" идет речь, не понимаю.
     counter = 0
     [counter := counter + 1 for i in range(
         len(cnt)) if (cnt[i] > 0 and cnt[i] <= k * 2)]
