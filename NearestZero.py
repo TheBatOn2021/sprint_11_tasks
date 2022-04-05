@@ -24,5 +24,4 @@ def read_input():
 
 if __name__ == "__main__":
     k, matrix = read_input()
-    # Ни одной ошибки линтеров flake8, pycodestyle, mypy нет
     print(hands_dex(k, matrix))
