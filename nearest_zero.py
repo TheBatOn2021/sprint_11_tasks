@@ -1,3 +1,4 @@
+# Извините, отправил старый файл...
 def read_input():
     num = int(input())
     plots = [c for c in input().split()]
