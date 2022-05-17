@@ -9,17 +9,18 @@ class Deque:
         self._tail = max_size - 1
         self.head_block = []
         self.tail_block = []
-        self.middle_block = [None] * max_size
+        self.main = [None] * max_size
 
     def is_empty(self):
         return self._size == 0
 
     def idx(self, add=False):
-        print(self.head_block, self.middle_block, self.tail_block)
-        idx = idx + 1 if add else idx - 1
-        # print(self._elements)
+        print(self.head_block, self.main, self.tail_block)
+        # idx = idx + 1 if add else idx - 1
+        # print(self._elements)p/';;
         try:
-            return idx % self._size
+            self.main = self.head_block + self.main + self.tail_block
+            # return idx % self._size
         except ZeroDivisionError:
             return idx
 
@@ -33,7 +34,7 @@ class Deque:
 
     def push_front(self, value: int):
         if self._size != self._max_size:
-            self.head_block.append(value)
+            self.head_block.insert(0,value)
             self._head += 1
             self.idx(True)
         else:
